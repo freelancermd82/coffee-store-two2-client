@@ -6,6 +6,7 @@ import CoffeeCart from './components/CoffeeCart';
 function App() {
 
   const coffees = useLoaderData();
+
   return (
     <div className='m-20'>
       <h1 className='text-6xl text-center my-20 text-purple-600'>Hot Cold Coffee: {coffees.length}</h1>

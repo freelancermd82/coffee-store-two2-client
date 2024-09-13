@@ -3,8 +3,9 @@ import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
 
-
+    
     const handleAddCoffee = event => {
+
         event.preventDefault();
 
         const form = event.target;
@@ -13,10 +14,11 @@ const AddCoffee = () => {
         const quantity = form.quantity.value;
         const supplier = form.supplier.value;
         const taste = form.taste.value;
+        const details = form.details.value;
         const category = form.category.value;
         const photo = form.photo.value;
 
-        const newCoffee = { name, quantity, supplier, taste, category, photo };
+        const newCoffee = { name, quantity, supplier, taste, details, category, photo };
         console.log(newCoffee);
 
         // send data to the server

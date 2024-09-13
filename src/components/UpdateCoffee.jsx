@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateCoffee = () => {
 
@@ -16,15 +17,17 @@ const UpdateCoffee = () => {
         const quantity = form.quantity.value;
         const supplier = form.supplier.value;
         const taste = form.taste.value;
+        const details = form.details.value;
         const category = form.category.value;
         const photo = form.photo.value;
 
-        const updatedCoffee = { name, quantity, supplier, taste, category, photo };
+
+        const updatedCoffee = { name, quantity, supplier, taste, details, category, photo };
         console.log(updatedCoffee);
 
         // send data to the server
-        fetch('http://localhost:5000/coffee', {
-            method: 'POST',
+        fetch(`http://localhost:5000/coffee/${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -33,7 +36,7 @@ const UpdateCoffee = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Coffee update successfully',
